@@ -34,4 +34,14 @@ public class TesteCampoTreinamento {
         Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
         driver.quit();
     }
+
+    @Test
+    public void deveInterarirComCheckbox() {
+        WebDriver driver = new FirefoxDriver();
+        driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+        driver.findElement(By.id("elementosForm:comidaFavorita:2")).click();
+        
+        Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:2")).isSelected());
+        driver.quit();
+    }
 }
