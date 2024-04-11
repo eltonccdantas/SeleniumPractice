@@ -22,6 +22,16 @@ public class TesteCampoTreinamento {
         driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
         driver.findElement(By.id("elementosForm:sugestoes")).sendKeys("teste");
         Assert.assertEquals("teste", driver.findElement(By.id("elementosForm:sugestoes")).getAttribute("value"));
+        driver.quit();
+    }
 
+    @Test
+    public void deveInterarirComRadioButton() {
+        WebDriver driver = new FirefoxDriver();
+        driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+        driver.findElement(By.id("elementosForm:sexo:0")).click();
+        
+        Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
+        driver.quit();
     }
 }
