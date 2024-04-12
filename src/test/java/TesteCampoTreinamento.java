@@ -114,8 +114,19 @@ public class TesteCampoTreinamento {
     }
 
     @Test
-    @Ignore
     public void deveInteragirComLinks() {
+        WebDriver driver = new FirefoxDriver();
+        driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+        
+        driver.findElement(By.linkText("Voltar")).click();
+        
+
+        Assert.assertEquals("Voltou!", driver.findElement(By.id("resultado")).getText());
+        driver.quit();
+    }
+
+    @Test
+    public void deveBuscarTextosNaPagina() {
         WebDriver driver = new FirefoxDriver();
         driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
         
