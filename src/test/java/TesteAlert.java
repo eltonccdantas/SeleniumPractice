@@ -65,4 +65,24 @@ public class TesteAlert {
         driver.quit();
     }
 
+    @Test
+    public void deveInteragirComAlertPrompt() {
+        WebDriver driver = new FirefoxDriver();
+        driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+
+        driver.findElement(By.id("prompt")).click();
+        Alert alert = driver.switchTo().alert();
+        String texto = alert.getText();
+        Assert.assertEquals("Digite um numero", texto);
+
+        alert.sendKeys("12");
+        alert.accept();
+        Assert.assertEquals("Era 12?", alert.getText());
+        alert.accept();
+        Assert.assertEquals(":D", alert.getText());
+        alert.accept();
+            
+        driver.quit();
+    }
+
 }
