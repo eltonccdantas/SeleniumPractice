@@ -1,7 +1,6 @@
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -97,7 +96,7 @@ public class TesteCampoTreinamento {
 
         List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
         Assert.assertEquals(3, allSelectedOptions.size());
-        
+
         driver.quit();
     }
 
@@ -105,8 +104,8 @@ public class TesteCampoTreinamento {
     public void deveInteragirComBotoes() {
         WebDriver driver = new FirefoxDriver();
         driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-        
-        WebElement botao =driver.findElement(By.id("buttonSimple"));
+
+        WebElement botao = driver.findElement(By.id("buttonSimple"));
         botao.click();
 
         Assert.assertEquals("Obrigado!", botao.getAttribute("value"));
@@ -117,23 +116,10 @@ public class TesteCampoTreinamento {
     public void deveInteragirComLinks() {
         WebDriver driver = new FirefoxDriver();
         driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-        
+
         driver.findElement(By.linkText("Voltar")).click();
-        
 
         Assert.assertEquals("Voltou!", driver.findElement(By.id("resultado")).getText());
-        driver.quit();
-    }
-
-    @Test
-    public void deveBuscarTextosNaPagina() {
-        WebDriver driver = new FirefoxDriver();
-        driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-        
-        driver.findElement(By.linkText("Voltar")).click();
-        
-
-        // Assert.assertEquals("Obrigado!", botao.getAttribute("value"));
         driver.quit();
     }
 }
